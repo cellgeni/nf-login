@@ -15,7 +15,7 @@ RUN apk update && apk add bash && apk add coreutils && apk add curl
 # see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 ENV NXF_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap' NXF_HOME=/.nextflow
 
-wget -qO- https://get.nextflow.io | bash
+RUN wget -qO- https://get.nextflow.io | bash
 
 RUN mv nextflow /usr/local/bin/nextflow
 
