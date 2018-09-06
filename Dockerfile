@@ -5,12 +5,11 @@
 FROM openjdk:8-jre
 MAINTAINER Stijn van Dongen <svd@sanger.ac.uk>
 
-
-# Add required dependencies
-# - bash 
-# - gnu coreutils 
-# - curl 
-RUN apk update && apk add bash && apk add coreutils && apk add curl
+# RUN apt-get update -y --no-install-recommends \
+#     && apt-get -y install -f \
+#        zlib1g-dev \
+#        libssl-dev \
+#        libcurl4-openssl-dev
 
 # see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 ENV NXF_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap' NXF_HOME=/.nextflow
