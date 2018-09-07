@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nasty-cajal
+  namespace: default
+  labels: {app: nextflow, runName: nasty-cajal}
+spec:
+  restartPolicy: Never
+  containers:
+  - name: nasty-cajal
+    image: quay.io/cellgeni/nf-login:latest
+    command: [/bin/bash, -c, source /etc/nextflow/init.sh; tail -f /dev/null]
+    workingDir: /mnt/gluster/svd
+    env:
+    - {name: NXF_WORK, value: /mnt/gluster/svd/work}
+    - {name: NXF_ASSETS, value: /mnt/gluster/projects}
+    - {name: NXF_EXECUTOR, value: k8s}
+    volumeMounts:
+    - {name: vol-1, mountPath: /mnt/gluster}
+    - {name: vol-2, mountPath: /etc/nextflow}
+  volumes:
+  - name: vol-1
+    persistentVolumeClaim: {claimName: nf-pvc}
+  - name: vol-2
+    configMap: {name: nf-config-8f8cdc01}
