@@ -14,7 +14,7 @@ MAINTAINER Stijn van Dongen <svd@sanger.ac.uk>
 # see https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits
 ENV NXF_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap' NXF_HOME=/.nextflow
 
-RUN wget -qO- https://get.nextflow.io | bash
+RUN export NXF_VER=0.32.0u1-SNAPSHOT && wget -qO- https://get.nextflow.io | bash
 
 RUN mv nextflow /usr/local/bin/nextflow
 
