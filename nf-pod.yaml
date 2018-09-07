@@ -8,7 +8,7 @@ spec:
   restartPolicy: Never
   containers:
   - name: nasty-cajal
-    image: quay.io/cellgeni/nf-login:latest
+    image: quay.io/cellgeni/nf-login:0.32.0u1-a
     command: [/bin/bash, -c, source /etc/nextflow/init.sh; tail -f /dev/null]
     workingDir: /mnt/gluster/svd
     env:
